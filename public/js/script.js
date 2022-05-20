@@ -1,7 +1,7 @@
 document.addEventListener(
-  "DOMContentLoaded",
+  'DOMContentLoaded',
   () => {
-    console.log("lesson-crud-populate-starter JS imported successfully!");
+    console.log('lesson-crud-populate-starter JS imported successfully!')
   },
   false
-);
+)

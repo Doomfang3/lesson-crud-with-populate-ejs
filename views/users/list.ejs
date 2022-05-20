@@ -1,0 +1,10 @@
+<h2>Users</h2>
+
+<ul>
+  <% users.forEach(({username, _id}) => { %>
+  <li>
+    <%= username %> <%#>!-- uncomment after you create user details page --%> <%#>!--
+    <a href="/users/<%= _id %>/posts">Read posts</a> --%>
+  </li>
+  <% }) %>
+</ul>

@@ -1,29 +1,29 @@
-const router = require("express").Router();
+const router = require('express').Router()
 
-const User = require("../models/User.model");
-const Post = require("../models/Post.model");
-const Comment = require("../models/Comment.model");
+const User = require('../models/User.model')
+const Post = require('../models/Post.model')
+const Comment = require('../models/Comment.model')
 
 // ****************************************************************************************
 // POST route - create a comment of a specific post
 // ****************************************************************************************
 
-router.post("/posts/:postId/comment", (req, res, next) => {
-  const { postId } = req.params;
-  const { author, content } = req.body;
+router.post('/posts/:postId/comment', (req, res, next) => {
+  const { postId } = req.params
+  const { author, content } = req.body
 
-  let user;
+  let user
 
   User.findOne({ username: author })
-    .then((userDocFromDB) => {
-      user = userDocFromDB;
+    .then(userDocFromDB => {
+      user = userDocFromDB
 
       // 1. if commenter is not user yet, let's register him/her as a user
       if (!userDocFromDB) {
-        return User.create({ username: author });
+        return User.create({ username: author })
       }
     })
-    .then((newUser) => {
+    .then(newUser => {
       // prettier-ignore
       Post.findById(postId)
       .then(dbPost => {
@@ -51,10 +51,10 @@ router.post("/posts/:postId/comment", (req, res, next) => {
         });
       });
     })
-    .catch((err) => {
-      console.log(`Error while creating the comment: ${err}`);
-      next(err);
-    });
-});
+    .catch(err => {
+      console.log(`Error while creating the comment: ${err}`)
+      next(err)
+    })
+})
 
-module.exports = router;
+module.exports = router
